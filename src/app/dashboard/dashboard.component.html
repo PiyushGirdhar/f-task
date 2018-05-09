@@ -1,0 +1,37 @@
+<div class="container-fluid">
+  <p>List of the tasks:</p>                                                                                      
+  <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+            <input ([ngModel])="searchText" class="form-control" placeholder="Identification">
+        </th>
+        <th>Task Name</th>
+        <th>Status</th>
+        <th>Owner</th>
+        <th>Comment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks | paginate: { itemsPerPage: 5, currentPage: p } | filter : searchText : 'taskName'">
+        <td>task_{{task.id}}</td>
+        <td>Enter {{task.taskName}} {{task.frequency}} commentary</td>
+        <td>
+          <a href="" class="btn btn-sm" [ngClass]="task.status == 'Pending' ? 'btn-warning' : 'btn-success'">
+              {{task.status}}
+          </a>
+        </td>
+        <td>{{task.owner}}</td>
+        <td *ngIf="task.comment">
+          <i class="fa fa-comment" aria-hidden="true"></i>
+        </td>
+        <td *ngIf="!task.comment">
+          No comment
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div> <!--table-responsive-->
+</div> <!--.container-->
