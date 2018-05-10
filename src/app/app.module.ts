@@ -14,7 +14,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 
 // Pipes
-import { FilterPipe } from './filter.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
+import { ReplacePipe } from './pipes/replace.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FilterPipe } from './filter.pipe';
     NavbarComponent,
     MainComponent,
     DashboardComponent,
-    FilterPipe
+    FilterPipe,
+    ReplacePipe
   ],
   imports: [
     BrowserModule,

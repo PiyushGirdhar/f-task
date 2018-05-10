@@ -5,7 +5,7 @@
     <thead>
       <tr>
         <th>
-            <input ([ngModel])="searchText" class="form-control" placeholder="Identification">
+            <input [(ngModel)]="searchText" type="text" class="form-control table-search" placeholder="Identification">
         </th>
         <th>Task Name</th>
         <th>Status</th>
@@ -14,11 +14,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let task of tasks | paginate: { itemsPerPage: 5, currentPage: p } | filter : searchText : 'taskName'">
-        <td>task_{{task.id}}</td>
-        <td>Enter {{task.taskName}} {{task.frequency}} commentary</td>
+      <tr *ngFor="let task of tasks | filter : searchText | paginate: { itemsPerPage: 10, currentPage: p }">
+        <td>{{task.id}}</td>
+        <td>Enter {{task.taskName | replace}} {{task.frequency}} commentary</td>
         <td>
-          <a href="" class="btn btn-sm" [ngClass]="task.status == 'Pending' ? 'btn-warning' : 'btn-success'">
+          <a href="" class="btn btn-sm btn-block" [ngClass]="task.status == 'Pending' ? 'btn-warning' : 'btn-success'">
               {{task.status}}
           </a>
         </td>

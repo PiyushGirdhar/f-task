@@ -6,13 +6,13 @@ import { Http } from '@angular/http';
 })
 export class TaskService {
 
-  private taskUrl = 'task.json';  // URL to web api
+  baseUrl: string = "http://localhost:3000/";  // URL to web api
 
   constructor(
     private http: Http
   ) { }
 
   getTasks() {
-    return this.http.get(this.taskUrl);
+    return this.http.get(this.baseUrl + 'tasks');
   }
 }

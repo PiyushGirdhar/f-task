@@ -24,5 +24,5 @@ export class DashboardComponent {
       this.tasks = data.json();
     });
   }
-
+ 
 }
